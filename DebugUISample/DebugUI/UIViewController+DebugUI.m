@@ -52,6 +52,10 @@
     UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizer:)];
     tap2.numberOfTapsRequired = 2;
     [contentView addGestureRecognizer:tap2];
+    
+    UITapGestureRecognizer *tap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizer:)];
+    tap3.numberOfTapsRequired = 3;
+    [contentView addGestureRecognizer:tap3];
 
 }
 
@@ -78,6 +82,20 @@
                     subView.hidden = YES;
                 }
             }
+        }
+            break;
+            
+        case 3:
+        {
+            NSMutableDictionary *result = [NSMutableDictionary dictionary];
+            [self logParametters:self.view result:&result count:0];
+            
+            NSError * err;
+            NSData * jsonData = [NSJSONSerialization dataWithJSONObject:result options:0 error:&err];
+            NSString * jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            NSLog(@"result -> \n %@", jsonString);
+            
+            
         }
             break;
             
@@ -111,7 +129,7 @@
     [view addSubview:commentLabel];
     commentLabel.numberOfLines = 4;
     commentLabel.textAlignment = NSTextAlignmentCenter;
-    commentLabel.text = @"Tap 1/2 to show/hide the controls";
+    commentLabel.text = @"Tap 1/2 to show/hide the controls. Tap 3 to log parameters";
     commentLabel.frame =  CGRectMake(0, height - buttonSize.height - 100, width, 100);
     objc_setAssociatedObject(self,kCommentLabel, commentLabel, OBJC_ASSOCIATION_ASSIGN);
 
@@ -208,4 +226,89 @@
     
 }
 
+- (void)logParametters:(UIView *)targetView result:(NSMutableDictionary** )result count:(NSUInteger)count {
+    NSLog(@"%@ - %lu", NSStringFromClass([targetView class]), (unsigned long)targetView.subviews.count);
+    if (targetView.subviews.count == 0) {
+        NSString *key = [NSString stringWithFormat:@"Child-%lu", (unsigned long)count];
+        
+        NSMutableDictionary *extensionParameters = [NSMutableDictionary dictionary];
+        if ([targetView isKindOfClass:[UILabel class]]) {
+            NSString *text = [(UILabel *) targetView text];
+            if (text) {
+                [extensionParameters setObject:text forKey:@"text"];
+            }
+            UIColor *textColor = [(UILabel *) targetView textColor];
+            [extensionParameters setObject:[self hexStringFromColor:textColor] forKey:@"textColor"];
+            UIFont *font = [(UILabel *) targetView font];
+            [extensionParameters setObject:[font description] forKey:@"font"];
+        } else if ([targetView isKindOfClass:[UITextField class]]) {
+            NSString *text = [(UITextField *) targetView text];
+            if (text) {
+                [extensionParameters setObject:text forKey:@"text"];
+            }
+            UIColor *textColor = [(UITextField *) targetView textColor];
+            [extensionParameters setObject:[self hexStringFromColor:textColor] forKey:@"textColor"];
+            UIFont *font = [(UITextField *) targetView font];
+            [extensionParameters setObject:[font description] forKey:@"font"];
+        } else if ([targetView isKindOfClass:[UITextView class]]) {
+            NSString *text = [(UITextView *) targetView text];
+            if (text) {
+                [extensionParameters setObject:text forKey:@"text"];
+            }
+            UIColor *textColor = [(UITextView *) targetView textColor];
+            [extensionParameters setObject:[self hexStringFromColor:textColor] forKey:@"textColor"];
+            UIFont *font = [(UITextView *) targetView font];
+            [extensionParameters setObject:[font description] forKey:@"font"];
+        } else if ([targetView isKindOfClass:[UIButton class]]) {
+            NSString *currentTitle = [(UIButton *) targetView currentTitle];
+            if (currentTitle) {
+                [extensionParameters setObject:currentTitle forKey:@"currentTitle"];
+            }
+            UIColor *textColor = [[(UIButton *) targetView titleLabel] textColor];
+            [extensionParameters setObject:[self hexStringFromColor:textColor] forKey:@"textColor"];
+            UIFont *font = [[(UIButton *) targetView titleLabel] font];
+            [extensionParameters setObject:[font description] forKey:@"font"];
+        }
+
+        
+        UIColor *nullableBackgroundColor = targetView.backgroundColor;
+        CGFloat alpha = targetView.alpha;
+        
+        NSDictionary *parameters = @{@"frame": NSStringFromCGRect(targetView.frame),
+                                     @"className" : NSStringFromClass([targetView class]),
+                                     @"alpha" : @(alpha),
+                                     @"backgroundColor" : [self hexStringFromColor:nullableBackgroundColor],
+                                     @"more-info" : extensionParameters
+                                     };
+
+        NSMutableArray *array = [*result objectForKey:key];
+        if (!array) {
+            array = [NSMutableArray array];
+        }
+        [array addObject:parameters];
+        [*result setObject:array forKey:key];
+    } else if ([targetView isEqual:objc_getAssociatedObject(self, kContentView)]) {
+        return;
+    }
+    else for (UIView *subView in targetView.subviews) {
+        [self logParametters:subView result:result count:count + 1];
+    }
+    
+}
+
+- (NSString *)hexStringFromColor:(UIColor *)color {
+    if (!color) {
+        return @"transparent";
+    }
+    const CGFloat *components = CGColorGetComponents(color.CGColor);
+    
+    CGFloat r = components[0];
+    CGFloat g = components[1];
+    CGFloat b = components[2];
+    
+    return [NSString stringWithFormat:@"#%02lX%02lX%02lX",
+            lroundf(r * 255),
+            lroundf(g * 255),
+            lroundf(b * 255)];
+}
 @end

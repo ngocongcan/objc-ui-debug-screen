@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="91g-tB-J5I">
-                                <rect key="frame" x="-1" y="44" width="377" height="56"/>
+                                <rect key="frame" x="-1" y="108" width="377" height="56"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="left-question-blue" translatesAutoresizingMaskIntoConstraints="NO" id="kba-6c-kKT">
                                         <rect key="frame" x="16" y="16" width="24.5" height="24.5"/>
@@ -48,7 +48,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KL3-8N-0jS">
-                                <rect key="frame" x="-1" y="116.5" width="377" height="56"/>
+                                <rect key="frame" x="-1" y="180.5" width="377" height="56"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="left-info-blue" translatesAutoresizingMaskIntoConstraints="NO" id="oX9-Ix-M1O">
                                         <rect key="frame" x="16" y="16" width="26" height="26"/>
@@ -72,10 +72,15 @@
                                     <constraint firstAttribute="width" constant="377" id="Yim-sQ-Z4W"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8mj-Hz-DDu">
+                                <rect key="frame" x="152" y="334" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="91g-tB-J5I" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="24" id="0Xh-8F-OU3"/>
+                            <constraint firstItem="91g-tB-J5I" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="88" id="0Xh-8F-OU3"/>
                             <constraint firstItem="KL3-8N-0jS" firstAttribute="leading" secondItem="mYm-9W-OIw" secondAttribute="leading" constant="-1" id="RNJ-de-uC3"/>
                             <constraint firstAttribute="trailing" secondItem="KL3-8N-0jS" secondAttribute="trailing" constant="-1" id="bRX-7N-gvd"/>
                             <constraint firstAttribute="trailing" secondItem="91g-tB-J5I" secondAttribute="trailing" constant="-1" id="cqT-GH-soI"/>
