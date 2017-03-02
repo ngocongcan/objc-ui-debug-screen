@@ -54,7 +54,7 @@
     [contentView addGestureRecognizer:tap2];
     
     UITapGestureRecognizer *tap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizer:)];
-    tap2.numberOfTapsRequired = 3;
+    tap3.numberOfTapsRequired = 3;
     [contentView addGestureRecognizer:tap3];
 
 }

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CCB213141E674502007B9A15 /* help-and-feedback.png in Resources */ = {isa = PBXBuildFile; fileRef = CCB213131E674502007B9A15 /* help-and-feedback.png */; };
-		CCB213161E675735007B9A15 /* Simulator Screen Shot Mar 2, 2017, 2.22.42 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = CCB213151E675735007B9A15 /* Simulator Screen Shot Mar 2, 2017, 2.22.42 AM.png */; };
 		CCB213181E675753007B9A15 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CCB213171E675753007B9A15 /* README.md */; };
 		CCC1DDC41E66BE3C00C4A972 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC1DDC31E66BE3C00C4A972 /* main.m */; };
 		CCC1DDC71E66BE3C00C4A972 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC1DDC61E66BE3C00C4A972 /* AppDelegate.m */; };
@@ -21,7 +20,6 @@
 
 /* Begin PBXFileReference section */
 		CCB213131E674502007B9A15 /* help-and-feedback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help-and-feedback.png"; sourceTree = "<group>"; };
-		CCB213151E675735007B9A15 /* Simulator Screen Shot Mar 2, 2017, 2.22.42 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot Mar 2, 2017, 2.22.42 AM.png"; sourceTree = "<group>"; };
 		CCB213171E675753007B9A15 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CCC1DDBF1E66BE3C00C4A972 /* DebugUISample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebugUISample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCC1DDC31E66BE3C00C4A972 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -52,7 +50,6 @@
 			isa = PBXGroup;
 			children = (
 				CCB213171E675753007B9A15 /* README.md */,
-				CCB213151E675735007B9A15 /* Simulator Screen Shot Mar 2, 2017, 2.22.42 AM.png */,
 				CCC1DDC11E66BE3C00C4A972 /* DebugUISample */,
 				CCC1DDC01E66BE3C00C4A972 /* Products */,
 			);
@@ -162,7 +159,6 @@
 			files = (
 				CCC1DDD21E66BE3C00C4A972 /* LaunchScreen.storyboard in Resources */,
 				CCC1DDCF1E66BE3C00C4A972 /* Assets.xcassets in Resources */,
-				CCB213161E675735007B9A15 /* Simulator Screen Shot Mar 2, 2017, 2.22.42 AM.png in Resources */,
 				CCC1DDCD1E66BE3C00C4A972 /* Main.storyboard in Resources */,
 				CCB213141E674502007B9A15 /* help-and-feedback.png in Resources */,
 			);
